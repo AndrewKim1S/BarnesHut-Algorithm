@@ -15,9 +15,13 @@ class simulation {
 				void pollEvents();
 				void update();
 				bool isRunning();
+				void generateObjects();
 
 		private:
 				sf::RenderWindow* window;
 				sf::Event event;
+
+				int width;
+				int height;
 
 };
