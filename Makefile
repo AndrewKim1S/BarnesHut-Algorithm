@@ -5,7 +5,7 @@ CFLAGS = -Wall -g
 
 LIBS = -lsfml-window -lsfml-graphics -lsfml-system
 
-SRCS = main.cpp simulation.cpp 
+SRCS = main.cpp simulation.cpp quadtree.cpp object.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

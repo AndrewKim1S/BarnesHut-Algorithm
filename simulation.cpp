@@ -8,6 +8,8 @@ simulation::simulation() {
 		width = 1500;
 		height = 900;
 
+		generateObjects();
+
 }
 
 simulation::~simulation() {
@@ -16,6 +18,9 @@ simulation::~simulation() {
 
 void simulation::render() {
 		window->clear(sf::Color(32, 32, 32));
+		for(object o : objects) {
+				window->draw(o.getShape());
+		}
 		window->display();
 }
 
@@ -46,5 +51,10 @@ bool simulation::isRunning() {
 }
 
 void simulation::generateObjects() {
-		
+		for(int i = 0; i < numObjects; i++) {
+				sf::Vector2f position;
+				position.x = rand() % static_cast<int>(width);
+				position.y = rand() % static_cast<int>(height);
+				objects.emplace_back(object(position));
+		}
 }

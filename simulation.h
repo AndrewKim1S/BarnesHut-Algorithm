@@ -1,9 +1,11 @@
 #include <iostream>
+#include <vector>
 #include "object.h"
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
+#define numObjects 25
 
 class simulation {
 
@@ -24,4 +26,5 @@ class simulation {
 				int width;
 				int height;
 
+				std::vector<object> objects;
 };
