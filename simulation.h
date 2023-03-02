@@ -1,11 +1,9 @@
-#include <iostream>
 #include <vector>
-#include "object.h"
+#include "quadtree.h"
 #include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
-#define numObjects 25
+#define numObjects 50
 
 class simulation {
 
@@ -27,4 +25,5 @@ class simulation {
 				int height;
 
 				std::vector<object> objects;
+				quadtree tree;
 };

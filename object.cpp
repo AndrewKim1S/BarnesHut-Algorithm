@@ -5,11 +5,11 @@ object::object() {}
 
 object::object(sf::Vector2f pos) {
 		position = pos;
-		radius = 7;
+		radius = 3;
 		shape = sf::CircleShape();
 		shape.setRadius(radius);
 		shape.setPosition(pos.x - radius, pos.y - radius);
-		shape.setFillColor(sf::Color::White);
+		shape.setFillColor(sf::Color(0, 204, 102));
 }
 
 object::~object() {}

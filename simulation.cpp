@@ -9,7 +9,7 @@ simulation::simulation() {
 		height = 900;
 
 		generateObjects();
-
+		
 }
 
 simulation::~simulation() {
@@ -18,6 +18,7 @@ simulation::~simulation() {
 
 void simulation::render() {
 		window->clear(sf::Color(32, 32, 32));
+
 		for(object o : objects) {
 				window->draw(o.getShape());
 		}
@@ -36,6 +37,10 @@ void simulation::pollEvents() {
 						case sf::Event::Closed:
 								window->close();
 								break;
+						case sf::Event::KeyPressed:
+								if(event.key.code == sf::Keyboard::Escape) {
+										window->close();
+								}
 						default:
 								break;
 				}
