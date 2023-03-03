@@ -25,5 +25,5 @@ class simulation {
 				int height;
 
 				std::vector<object> objects;
-				quadtree tree;
+				quadtree root;
 };

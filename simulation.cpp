@@ -8,6 +8,10 @@ simulation::simulation() {
 		width = 1500;
 		height = 900;
 
+		sf::RectangleShape rootShape = sf::RectangleShape();
+		rootShape.setSize(sf::Vector2f(width, height));
+		rootShape.setPosition(0.f, 0.f);
+		quadtree root(rootShape, 0);
 		generateObjects();
 		
 }
@@ -27,7 +31,6 @@ void simulation::render() {
 
 void simulation::run() {
 		pollEvents();
-		update();
 		render();
 }
 
@@ -48,7 +51,9 @@ void simulation::pollEvents() {
 }
 
 void simulation::update() {
-
+		for(object o : objects) {
+				root.insert(o);
+		}
 }
 
 bool simulation::isRunning() {
@@ -62,4 +67,6 @@ void simulation::generateObjects() {
 				position.y = rand() % static_cast<int>(height);
 				objects.emplace_back(object(position));
 		}
+
+		update();
 }

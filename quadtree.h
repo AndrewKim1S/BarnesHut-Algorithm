@@ -14,9 +14,8 @@ class quadtree{
 				quadtree(sf::RectangleShape rect, int level);
 				~quadtree();
 
-				void insert(object* o);
+				void insert(object& o);
 				void clear();
-				object* search();
 
 
 		private:
@@ -30,6 +29,6 @@ class quadtree{
 				quadtree* botRight;
 
 				// Perhaps change to vector
-				object* obj;
+				object obj;
 				// std::vector<object*> objs;
 };
