@@ -14,7 +14,8 @@ quadtree::quadtree() {
 
 quadtree::quadtree(sf::RectangleShape rect, int l) {
 		rectangle = rect;
-		rectangle.setOutlineThickness(4);
+		rectangle.setFillColor(sf::Color::Black);
+		rectangle.setOutlineThickness(3);
 		rectangle.setOutlineColor(sf::Color::White);
 		topLeft = NULL;
 		topRight = NULL;
@@ -50,7 +51,6 @@ void quadtree::insert(object& o) {
 		float verticalMid = rectangle.getSize().x/2 + rectangle.getPosition().x;
 		float horizontalMid = rectangle.getSize().y/2 + rectangle.getPosition().y;
 
-		std::cout << "test" << std::endl;
 		// object is left side
 		if(verticalMid >= o.getPosition().x) {
 				// object is top left
@@ -100,6 +100,22 @@ void quadtree::insert(object& o) {
 						}
 						botRight->insert(o);
 				}
+		}
+}
+
+void quadtree::render(sf::RenderTarget* target) {
+		target->draw(rectangle);
+		if(topLeft != NULL) {
+				topLeft->render(target);
+		}
+		if(botLeft != NULL) {
+				botLeft->render(target);
+		}
+		if(topRight != NULL) {
+				topRight->render(target);
+		}
+		if(botRight != NULL) {
+				botRight->render(target);
 		}
 }
 

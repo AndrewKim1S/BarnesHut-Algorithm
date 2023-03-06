@@ -16,6 +16,7 @@ class quadtree{
 
 				void insert(object& o);
 				void clear();
+				void render(sf::RenderTarget* target);
 
 
 		private:

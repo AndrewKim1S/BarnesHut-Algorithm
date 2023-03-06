@@ -14,6 +14,10 @@ object::object(sf::Vector2f pos) {
 
 object::~object() {}
 
+void object::render(sf::RenderTarget* target) {
+		target->draw(shape);
+}
+
 sf::CircleShape object::getShape() {
 		return shape;
 }

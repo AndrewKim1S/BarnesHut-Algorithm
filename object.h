@@ -8,6 +8,7 @@ class object{
 				object();
 				object(sf::Vector2f pos);
 				~object();
+				void render(sf::RenderTarget* target);
 				sf::CircleShape getShape();
 				sf::Vector2f getPosition();
 

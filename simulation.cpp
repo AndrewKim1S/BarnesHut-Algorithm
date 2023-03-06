@@ -23,8 +23,10 @@ simulation::~simulation() {
 void simulation::render() {
 		window->clear(sf::Color(32, 32, 32));
 
+		root.render(window);
 		for(object o : objects) {
-				window->draw(o.getShape());
+				// window->draw(o.getShape());
+				o.render(window);
 		}
 		window->display();
 }
