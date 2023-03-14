@@ -5,6 +5,7 @@ simulation::simulation() {
 		window = new sf::RenderWindow(sf::VideoMode(1500, 900), "Barnes Hut Algorithm");
 		window->setPosition(sf::Vector2i(200, 75));
 
+		window->setFramerateLimit(60);
 		width = 1500;
 		height = 900;
 
@@ -25,7 +26,6 @@ void simulation::render() {
 
 		root.render(window);
 		for(object o : objects) {
-				// window->draw(o.getShape());
 				o.render(window);
 		}
 		window->display();
@@ -33,6 +33,7 @@ void simulation::render() {
 
 void simulation::run() {
 		pollEvents();
+		update();
 		render();
 }
 
@@ -53,6 +54,13 @@ void simulation::pollEvents() {
 }
 
 void simulation::update() {
+		root.clear();
+
+		
+		for(object &o : objects) {
+				o.updatePosition();
+		}
+
 		for(object o : objects) {
 				root.insert(o);
 		}
@@ -69,6 +77,4 @@ void simulation::generateObjects() {
 				position.y = rand() % static_cast<int>(height);
 				objects.emplace_back(object(position));
 		}
-
-		update();
 }

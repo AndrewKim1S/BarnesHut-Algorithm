@@ -29,7 +29,5 @@ class quadtree{
 				quadtree* botLeft;
 				quadtree* botRight;
 
-				// Perhaps change to vector
-				object obj;
-				// std::vector<object*> objs;
+				std::vector<object> objs;
 };

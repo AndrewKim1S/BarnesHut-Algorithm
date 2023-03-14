@@ -44,7 +44,7 @@ void quadtree::insert(object& o) {
 
 		// Check that quadtree node can be split
 		if(level >= MaxLevel) {
-				obj = o;
+				objs.push_back(o);
 				return;
 		}
 
@@ -52,7 +52,7 @@ void quadtree::insert(object& o) {
 		float horizontalMid = rectangle.getSize().y/2 + rectangle.getPosition().y;
 
 
-		// Test, may have to remove
+		// Create Quadtree 
 		if(topLeft == NULL) {
 				sf::RectangleShape r = sf::RectangleShape();
 				r.setSize(sf::Vector2f(rectangle.getSize().x/2, rectangle.getSize().y/2));
@@ -84,23 +84,10 @@ void quadtree::insert(object& o) {
 		if(verticalMid >= o.getPosition().x) {
 				// object is top left
 				if(horizontalMid >= o.getPosition().y) {
-						/*if(topLeft == NULL) {
-								sf::RectangleShape r = sf::RectangleShape();
-								r.setSize(sf::Vector2f(rectangle.getSize().x/2, rectangle.getSize().y/2));
-								r.setPosition(rectangle.getPosition());
-								topLeft = new quadtree(r, level+1);
-						}*/
 						topLeft->insert(o);
 				} 
 				// object is bot left
 				else {
-						/*if(botLeft == NULL) {
-								sf::RectangleShape r = sf::RectangleShape();
-								r.setSize(sf::Vector2f(rectangle.getSize().x/2, rectangle.getSize().y/2));
-								r.setPosition(rectangle.getPosition().x, rectangle.getPosition().y + 
-										rectangle.getSize().y/2);
-								botLeft = new quadtree(r, level+1);
-						} */ 
 						botLeft->insert(o);
 				}
 		} 
@@ -109,24 +96,10 @@ void quadtree::insert(object& o) {
 		else {
 				// object is top right
 				if(horizontalMid >= o.getPosition().y) {
-						/*if(topRight == NULL) {
-								sf::RectangleShape r = sf::RectangleShape();
-								r.setSize(sf::Vector2f(rectangle.getSize().x/2, rectangle.getSize().y/2));
-								r.setPosition(rectangle.getPosition().x +	rectangle.getSize().x/2, 
-										rectangle.getPosition().y);
-								topRight = new quadtree(r, level+1);
-						}*/
 						topRight->insert(o);
 				}
 				// object is bot right
 				else {
-						/*if(botRight == NULL) {
-								sf::RectangleShape r = sf::RectangleShape();
-								r.setSize(sf::Vector2f(rectangle.getSize().x/2, rectangle.getSize().y/2));
-								r.setPosition(rectangle.getPosition().x + rectangle.getSize().x/2,
-										rectangle.getPosition().y + rectangle.getSize().y/2);
-								botRight = new quadtree(r, level+1);
-						}*/
 						botRight->insert(o);
 				}
 		}
@@ -148,3 +121,19 @@ void quadtree::render(sf::RenderTarget* target) {
 		}
 }
 
+
+void quadtree::clear() {
+		if(topLeft != NULL) {
+				topLeft->clear();
+		} if(botLeft != NULL) {
+				botLeft->clear();
+		} if(topRight != NULL) {
+				topRight->clear();
+		} if(botRight != NULL) {
+				botRight->clear();
+		}
+		topLeft = NULL;
+		topRight = NULL;
+		botLeft = NULL;
+		botRight = NULL;
+}
