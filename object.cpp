@@ -10,8 +10,8 @@ object::object(sf::Vector2f pos) {
 		shape.setRadius(radius);
 		shape.setPosition(pos.x - radius, pos.y - radius);
 		shape.setFillColor(sf::Color(0, 204, 102));
-		movement.x = rand() % static_cast<int>(8);
-		movement.y = rand() % static_cast<int>(8);
+		movement.x = rand() % static_cast<int>(6);
+		movement.y = rand() % static_cast<int>(6);
 		int negative = rand() % static_cast<int>(4);
 		if(negative == 2) {
 				movement.x = -movement.x;

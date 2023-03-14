@@ -4,7 +4,7 @@
 #include "object.h"
 
 
-#define MaxLevel 5
+#define MaxLevel 6
 #define MaxObjs 3
 
 class quadtree{
